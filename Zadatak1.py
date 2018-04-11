@@ -5,7 +5,6 @@ class Grid:
     x = 5
     y = 5
 
-
 class Robot:
     def __init__(self):
         self.face = None
@@ -35,7 +34,6 @@ class Robot:
 
     def report(self):
         print('Output:{0},{1},{2}'.format(self.x, self.y, self.face))
-
 
             
 def isFaceLegit(face):
@@ -93,8 +91,7 @@ def commandParser(x, robot):
                 robot.rotate('RIGHT')
 
             elif temp[x] == 'REPORT':
-                robot.report()
-                
+                robot.report()     
 
 robot = Robot() 
 
