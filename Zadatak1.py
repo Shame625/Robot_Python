@@ -35,6 +35,28 @@ class Robot:
     def report(self):
         print('Output:{0},{1},{2}'.format(self.x, self.y, self.face))
 
+    def commandParser(self, x):
+        temp = x.split(' ')
+        for x in range (len(temp)):
+            if temp[x] in commands:
+                if temp[x] == 'PLACE':
+                    if (x + 1) < len(temp):
+                        args = temp[x + 1].split(',')
+                        robot.placeRobot(int(args[0]), int(args[1]), args[2])
+                        x+=1
+
+                elif temp[x] == 'MOVE':
+                    robot.move()
+
+                elif temp[x] == 'LEFT':
+                    robot.rotate('LEFT')
+
+                elif temp[x] == 'RIGHT':
+                    robot.rotate('RIGHT')
+
+                elif temp[x] == 'REPORT':
+                    robot.report()     
+
             
 def isFaceLegit(face):
     return face in faces
@@ -69,32 +91,8 @@ def getNewRotation(side, currentFace):
             x = 0
         return (list(faces.keys())[list(faces.values()).index(x)])
 
-
-def commandParser(x, robot):
-    temp = x.split(' ')
-
-    for x in range (len(temp)):
-        if temp[x] in commands:
-            if temp[x] == 'PLACE':
-                if (x + 1) < len(temp):
-                    args = temp[x + 1].split(',')
-                    robot.placeRobot(int(args[0]), int(args[1]), args[2])
-                    x+=1
-
-            elif temp[x] == 'MOVE':
-                robot.move()
-
-            elif temp[x] == 'LEFT':
-                robot.rotate('LEFT')
-
-            elif temp[x] == 'RIGHT':
-                robot.rotate('RIGHT')
-
-            elif temp[x] == 'REPORT':
-                robot.report()     
-
 robot = Robot() 
 
 while True:
     x = input("Input:")
-    commandParser(x, robot)
+    robot.commandParser(x)
