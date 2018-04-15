@@ -42,20 +42,20 @@ class Robot:
                 if temp[x] == 'PLACE':
                     if (x + 1) < len(temp):
                         args = temp[x + 1].split(',')
-                        robot.placeRobot(int(args[0]), int(args[1]), args[2])
+                        self.placeRobot(int(args[0]), int(args[1]), args[2])
                         x+=1
 
                 elif temp[x] == 'MOVE':
-                    robot.move()
+                     self.move()
 
                 elif temp[x] == 'LEFT':
-                    robot.rotate('LEFT')
+                     self.rotate('LEFT')
 
                 elif temp[x] == 'RIGHT':
-                    robot.rotate('RIGHT')
+                     self.rotate('RIGHT')
 
                 elif temp[x] == 'REPORT':
-                    robot.report()     
+                     self.report()     
 
             
 def isFaceLegit(face):
